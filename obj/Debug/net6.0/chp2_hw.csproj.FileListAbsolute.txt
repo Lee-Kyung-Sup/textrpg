@@ -1,0 +1,14 @@
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\bin\Debug\net6.0\chp2_hw.exe
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\bin\Debug\net6.0\chp2_hw.deps.json
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\bin\Debug\net6.0\chp2_hw.runtimeconfig.json
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\bin\Debug\net6.0\chp2_hw.dll
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\bin\Debug\net6.0\chp2_hw.pdb
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.AssemblyInfoInputs.cache
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.AssemblyInfo.cs
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.csproj.CoreCompileInputs.cache
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.dll
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\refint\chp2_hw.dll
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.pdb
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\chp2_hw.genruntimeconfig.cache
+C:\Users\leekyungsup\source\repos\chp2_hw\chp2_hw\obj\Debug\net6.0\ref\chp2_hw.dll

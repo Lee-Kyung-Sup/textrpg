@@ -144,24 +144,24 @@ namespace chp2_hw
             }
 
             public void displayinven()
-        {
-            Console.WriteLine("\n");
-            if (Inventory.Count == 0)
             {
-                Console.WriteLine(" ");
-            }
-            else
-            {
-                int count = 1;
-                foreach (equipment item in a.Inventory)
+                Console.WriteLine("\n");
+                if (Inventory.Count == 0)
                 {
-                    Console.Write($"[{count++}] ");
-                    item.PrintInfo();
-                    Console.Write(item.IsEquipped ? "[E]" : "");
-                    Console.WriteLine();
+                    Console.WriteLine(" ");
+                }
+                else
+                {
+                    int count = 1;
+                    foreach (equipment item in a.Inventory)
+                    {
+                        Console.Write($"[{count++}] ");
+                        item.PrintInfo();
+                        Console.Write(item.IsEquipped ? "[E]" : "");
+                        Console.WriteLine();
+                    }
                 }
             }
-        }
         }
 
         //장비

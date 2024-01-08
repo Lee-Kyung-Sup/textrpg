@@ -9,8 +9,6 @@ namespace chp2_hw
         {
             Console.Clear();
             StartMenu();
-
-
         }
 
         //시작메뉴
@@ -141,7 +139,9 @@ namespace chp2_hw
 
             public void Printplayer()
             {
-                Console.WriteLine($"Lv. {Level}\n {Name} (전사)\n 공격력: {Attackd}\n 방어력: {Defense}\n 체력: {Hp} Gold: {Gold}");
+                   Console.WriteLine($"Lv. {Level}\n {Name} (전사)\n 공격력: {Attackd + getequippedstat("공격력")}\n " +
+               $"방어력: {Defense + getequippedstat("방어력")}\n 체력: {Hp}\n Gold: {Gold}");
+}
             }
 
             public void displayinven()

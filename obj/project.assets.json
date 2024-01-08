@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\leekyungsup\\source\\repos\\chp2_hw\\chp2_hw\\chp2_hw.csproj",
+      "projectUniqueName": "C:\\Users\\leekyungsup\\Documents\\GitHub\\textrpg\\chp2_hw.csproj",
       "projectName": "chp2_hw",
-      "projectPath": "C:\\Users\\leekyungsup\\source\\repos\\chp2_hw\\chp2_hw\\chp2_hw.csproj",
+      "projectPath": "C:\\Users\\leekyungsup\\Documents\\GitHub\\textrpg\\chp2_hw.csproj",
       "packagesPath": "C:\\Users\\leekyungsup\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\leekyungsup\\source\\repos\\chp2_hw\\chp2_hw\\obj\\",
+      "outputPath": "C:\\Users\\leekyungsup\\Documents\\GitHub\\textrpg\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\leekyungsup\\AppData\\Roaming\\NuGet\\NuGet.Config",

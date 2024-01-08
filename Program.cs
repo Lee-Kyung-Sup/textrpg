@@ -9,14 +9,12 @@ namespace chp2_hw
         {
             Console.Clear();
             StartMenu();
-
-
         }
 
         //시작메뉴
         static void StartMenu()
         {
-            
+
             while (true)
             {
                 Console.Clear();
@@ -50,25 +48,25 @@ namespace chp2_hw
                     store();
                     break;
 
-            }          
+            }
         }
         //캐릭 상태
-        static job a = new job(01, "Lee", 10, 5, 100, 1500);
+        static job a = new job(01, "Lee", 10, 5, 100, 3500);
         static void status()
         {
             Console.Clear();
             Console.WriteLine("캐릭터의 정보가 표시됩니다.");
-            job a = new job(01, "Lee", 10, 5, 100, 1500);
-            
+            //job a = new job(01, "Lee", 10, 5, 100, 1500);
 
-            
+
+
             a.Printplayer();
 
             Console.WriteLine("\n0. 나가기\n");
             Console.WriteLine("원하시는 행동을 입력해주세요.\n>>");
             if (int.TryParse(Console.ReadLine(), out int exit) && exit == 0)
             {
-               
+                return;
             }
             else
             {
@@ -85,7 +83,7 @@ namespace chp2_hw
                 Console.WriteLine("[아이템 목록]");
 
                 a.displayinven();
-              
+
                 Console.WriteLine("\n1.장착관리");
                 Console.WriteLine("\n2.나가기");
                 Console.WriteLine("\n원하시는 행동을 입력해주세요.\n>>");
@@ -96,7 +94,7 @@ namespace chp2_hw
                         equipinven();
                         break;
                     }
-                    else if(r==2)
+                    else if (r == 2)
                     {
                         return; // 인벤토리 관리 메뉴 종료
                     }
@@ -104,7 +102,7 @@ namespace chp2_hw
                     {
                         Console.WriteLine("잘못된 선택입니다.");
                     }
-                    
+
                 }
                 else
                 {
@@ -124,7 +122,7 @@ namespace chp2_hw
             public int Attackd;
             public int Defense;
             public int Hp;
-            public int Gold {get; set;}
+            public int Gold { get; set; }
             public job(int level, string name, int sttackd, int defense, int hp, int gold)
             {
                 Level = level;
@@ -141,28 +139,32 @@ namespace chp2_hw
 
             public void Printplayer()
             {
-                Console.WriteLine($"Lv. {Level}\n {Name} (전사)\n 공격력: {Attackd}\n 방어력: {Defense}\n 체력: {Hp} Gold: {Gold}");
+                Console.WriteLine($"Lv. {Level}\n {Name} (전사)\n 공격력: {Attackd + getequippedstat("공격력")}\n " +
+            $"방어력: {Defense + getequippedstat("방어력")}\n 체력: {Hp}\n Gold: {Gold}");
             }
 
             public void displayinven()
+        {
+            Console.WriteLine("\n");
+            if (Inventory.Count == 0)
             {
-                  Console.WriteLine("\n");
-                  if (Inventory.Count == 0)
-                  {
-                      Console.WriteLine(" ");
-                  }
-                  else
-                  {
-                      foreach (equipment item in Inventory)
-                      {
-                           item.PrintInfo();
-                      }
-                  }       
+                Console.WriteLine(" ");
+            }
+            else
+            {
+                int count = 1;
+                foreach (equipment item in a.Inventory)
+                {
+                    Console.Write($"[{count++}] ");
+                    item.PrintInfo();
+                    Console.Write(item.IsEquipped ? "[E]" : "");
+                    Console.WriteLine();
+                }
             }
         }
+        }
 
-       
-
+        //장비
         public class equipment
         {
             public int Num { get; set; }
@@ -171,7 +173,7 @@ namespace chp2_hw
             public int Stat { get; set; }
             public string Explain { get; set; }
             public int Price { get; set; }
-
+            public bool IsEquipped { get; set; }
             public equipment(int num, string name, string type, int stat, string explain, int price)
             {
                 Num = num;
@@ -181,19 +183,89 @@ namespace chp2_hw
                 Explain = explain;
                 Price = price;
             }
-                
+
 
             public void PrintInfo()
-            { 
+            {
                 Console.WriteLine($"{Num}. {Name} | {Type}{Stat} | {Explain} | {Price}");
             }
         }
 
+        //장착 관리
         static void equipinven()
         {
+            Console.Clear();
+            Console.WriteLine("[장착 관리]\n");
+            Console.WriteLine("[아이템 목록]");
 
+            int count = 1;
+            foreach (equipment item in a.Inventory)
+            {
+                Console.Write($"[{count++}] ");
+                item.PrintInfo();
+                Console.Write(item.IsEquipped ? "[E]" : " ");
+                Console.WriteLine(" ");
+            }
+
+            Console.WriteLine("\n장착할 아이템을 선택해주세요. (0: 나가기)\n>>");
+            if (int.TryParse(Console.ReadLine(), out int choice))
+            {
+                if (choice == 0)
+                {
+                    return; // 장착 관리 메뉴 종료
+                }
+                else if (choice > 0 && choice <= a.Inventory.Count)
+                {
+                    toggleequip(a.Inventory[choice - 1]);
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 선택입니다.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("숫자를 입력하세요.");
+            }
+
+            Console.ReadLine();
         }
 
+        //장착 관리 1번 눌렀을 시
+        static void toggleequip(equipment item)
+        {
+            Console.Clear();
+            Console.WriteLine($"아이템 장착 토글: {item.Name}\n");
+            item.PrintInfo();
+
+            if (item.IsEquipped)
+            {
+                Console.WriteLine("장착을 해제합니다.");
+
+            }
+            else
+            {
+                Console.WriteLine("장착합니다.");
+
+            }
+
+            item.IsEquipped = !item.IsEquipped;
+            Console.WriteLine("아무 키나 누르세요.");
+        }
+
+        //상태보기에 스탯추가
+        static int getequippedstat(string Type)
+        {
+            int totalStat = 0;
+            foreach (equipment item in a.Inventory)
+            {
+                if (item.IsEquipped && item.Type == Type)
+                {
+                    totalStat += item.Stat;
+                }
+            }
+            return totalStat;
+        }
 
         //상점
         static void store()
@@ -231,7 +303,7 @@ namespace chp2_hw
                         storebuy(a, e1, e2, e3, e4, e5, e6);
                         break;
                     }
-                    else if(r ==0)
+                    else if (r == 0)
                     {
                         return; // 상점 종료
                     }
@@ -239,13 +311,14 @@ namespace chp2_hw
                     {
                         Console.WriteLine("잘못된 선택입니다.");
                     }
-                       
-                 Console.ReadLine();
+
+                    Console.ReadLine();
 
                 }
             }
 
         }
+
         //상점-아이템구매
         static void storebuy(job a, params equipment[] items)
         {
@@ -257,7 +330,7 @@ namespace chp2_hw
                 a.PrintGold();
                 Console.WriteLine("\n[아이템 목록]");
 
-                foreach(equipment item in items)
+                foreach (equipment item in items)
                 {
                     item.PrintInfo();
                 }
@@ -284,19 +357,20 @@ namespace chp2_hw
                     Console.WriteLine("숫자를 입력");
                 }
                 Console.ReadLine();
-               
-            }  
+
+            }
         }
-       
-        static void buyitem(job a, equipment item) 
+
+        //상점 아이템 구매
+        static void buyitem(job a, equipment item)
         {
             Console.Clear();
             Console.WriteLine($"아에템 구매: {item.Name}");
             item.PrintInfo();
-            
-            if(a.Gold >= item.Price)
+
+            if (a.Gold >= item.Price)
             {
-                if(a.Inventory.Contains(item))
+                if (a.Inventory.Contains(item))
                 {
                     Console.WriteLine($"{item.Name}은 이미 보유하고 있습니다.");
                     Console.WriteLine("아무키나 누르세요.");
@@ -307,7 +381,7 @@ namespace chp2_hw
                     a.Gold -= item.Price;
                     a.Inventory.Add(item);
                     Console.WriteLine("아무키나 누르세요.");
-                }                  
+                }
             }
             else
             {

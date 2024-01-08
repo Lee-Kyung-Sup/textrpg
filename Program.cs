@@ -51,7 +51,7 @@ namespace chp2_hw
             }
         }
         //캐릭 상태
-        static job a = new job(01, "Lee", 10, 5, 100, 1500);
+        static job a = new job(01, "Lee", 10, 5, 100, 3500);
         static void status()
         {
             Console.Clear();
@@ -360,7 +360,7 @@ namespace chp2_hw
 
             }
         }
-        
+
         //상점 아이템 구매
         static void buyitem(job a, equipment item)
         {
